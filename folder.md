@@ -28,7 +28,7 @@ src/
 ├── users/
 │   ├── users.module.ts
 │   ├── users.service.ts
-│   ├── users.controller.ts (opsional)
+│   ├── users.controller.ts
 │   ├── entities/
 │   │   └── user.entity.ts
 │

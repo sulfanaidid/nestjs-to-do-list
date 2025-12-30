@@ -12,14 +12,12 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) { }
 
-  // ✅ REGISTER
   async register(email: string, password: string) {
     const hashed = await bcrypt.hash(password, 10);
     const user = await this.usersService.create(email, hashed);
     return { id: user.id, email: user.email };
   }
 
-  // ✅ LOGIN (ISSUE TOKENS + SAVE HASHED RT)
   async login(user: User) {
     const payload = { sub: user.id, email: user.email };
 
@@ -63,8 +61,6 @@ export class AuthService {
     return this.login(user);
   }
 
-
-  // ✅ VALIDATE USER (LOCAL STRATEGY)
   async validateUser(email: string, password: string): Promise<User | null> {
     const user = await this.usersService.findByEmail(email);
     if (!user) return null;
